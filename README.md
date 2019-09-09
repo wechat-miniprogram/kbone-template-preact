@@ -57,7 +57,7 @@ export default Counter
 npm i omi-cli -g
 omi init-mpreact my-app
 cd my-app
-npm start        //开发小程序
+npm run mp       //开发小程序
 npm run web      //开发 web
 npm run build    //发布 web
 ```
