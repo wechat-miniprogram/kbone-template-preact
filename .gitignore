@@ -65,3 +65,4 @@ typings/
 .DS_Store
 dist
 package-lock.json
+build
