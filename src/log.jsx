@@ -1,12 +1,11 @@
 import { render, h } from 'preact'
-import Counter from './components/counter'
 
 export default function createApp() {
   const container = document.createElement('div')
   container.id = 'app'
   document.body.appendChild(container)
 
-  render(<Counter />, container)
+  render(<div>我是log页面</div>, container)
 }
 
-"undefined" != typeof wx && wx.getSystemInfoSync || createApp()
+;('undefined' != typeof wx && wx.getSystemInfoSync) || createApp()
