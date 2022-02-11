@@ -10,43 +10,29 @@
 ## 一套语法多端运行
 
 ```jsx
-import { h, Component } from 'preact'
+import { h } from 'preact'
+import { useState } from 'preact/hooks'
 import './index.css'
 
-class Counter extends Component {
-  state = { count: 1 }
+function Counter() {
+  const [count, setCount] = useState(0)
+  return (
+    <div>
+      <button onClick={() => setCount(count - 1)}>-</button>
+      <span>{count}</span>
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <div onClick={clickHandle}>跳转</div>
+    </div>
+  )
+}
 
-  sub = () => {
-    this.setState(prevState => {
-      return { count: --prevState.count }
+function clickHandle() {
+  if ('undefined' != typeof wx && wx.getSystemInfoSync) {
+    wx.navigateTo({
+      url: '../log/index?id=1',
     })
-  }
-
-  add = () => {
-    this.setState(prevState => {
-      return { count: ++prevState.count }
-    })
-  }
-
-  clickHandle = () => {
-    if ("undefined" != typeof wx && wx.getSystemInfoSync) {
-      wx.navigateTo({
-        url: '../log/index?id=1'
-      })
-    } else {
-      location.href = 'log.html'
-    }
-  }
-
-  render({ }, { count }) {
-    return (
-      <div>
-        <button onClick={this.sub}>-</button>
-        <span>{count}</span>
-        <button onClick={this.add}>+</button>
-        <div onClick={this.clickHandle}>跳转</div>
-      </div>
-    )
+  } else {
+    location.href = 'log.html'
   }
 }
 
